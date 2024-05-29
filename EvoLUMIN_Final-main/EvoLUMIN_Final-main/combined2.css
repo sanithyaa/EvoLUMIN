@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: arial;
+}
+
+body {
+    background-color: black;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    zoom: 150%;
+}
+
+.container {
+    position: relative;
+}
+
+.row {
+    display: inline-flex;
+    margin-top: -32px;
+    margin-left: -50px;
+}
+
+.row:nth-child(even) {
+    margin-left: 2px;
+}
+
+.hexagon {
+    width: 100px;
+    height: 110px;
+    margin: 2px;
+    background-color: #111;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    animation: animation 4s linear infinite;
+    transition: 0s;
+    position: relative; /* Needed for positioning pseudo-elements */
+}
+
+.hexagon:hover {
+    background-color: rgb(14, 209, 63);
+}
+
+@keyframes animation {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.hexagon:after {
+    content: ' ';
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    background-color: #111;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hexagon:before {
+    content: ' ';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.03);
+    z-index: 2;
+}
+
+.heading {
+    position: absolute;
+    top: 37%;
+    width: 100%;
+    text-align: center;
+    z-index: 10; /* Ensure it appears above the hexagons */
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+    letter-spacing: 0.1em; /* Adjust letter spacing to spread out the text */
+    font-size: 6rem;
+    color: #0e3742;
+    /* text-transform: uppercase; */
+    width: 100%;
+    text-align: center;
+    font-family: letter-spacing;
+}
+
+h1 span {
+    animation: animate 2s linear infinite;
+}
+
+h1 span:nth-child(even) {
+    transition-delay: 0.4s;
+}
+
+@keyframes animate {
+    0%, 18%, 20%, 50.1%, 60%, 65.1%, 80%, 90.1%, 92% {
+        color: #0e3742;
+        text-shadow: none;
+    }
+    18.1%, 20.1%, 30%, 50%, 60.1%, 65%, 80.1%, 90%, 92.1%, 100% {
+        color: #fff;
+        text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4, 0 0 80px #03bcf4, 0 0 160px #03bcf4;
+    }
+}
+.new-con{
+    width: 100%;
+    height: 100vh;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.4rem;
+    color: white;
+    text-shadow: 0 0 10px #6f2afa, 0 0 20px #6f2afa, 0 0 40px #6f2afa, 0 0 80px #6f2afa, 0 0 160px #6f2afa;
+    z-index: 10;
+}
+.auto-type{
+    font-family: "Reddit Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    right: 2%; /* Position on the right */
+    transform: translateY(-50%);
+    z-index: 50;
+    width: 60px; /* Adjusted width for capsule shape */
+    height: 400px; /* Adjusted height for capsule shape */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 8px;
+    border-radius: 30px; /* Capsule shape */
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%; /* Ensures container spans the entire width */
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column; /* Ensures icon and tooltip are stacked */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+    width: 100%; /* Ensures item spans the entire width */
+}
+
+.nav-item i {
+    font-size: 24px; /* Adjust icon size */
+}
+
+.nav-item:hover {
+    color: rgb(102, 162, 246);
+}
+
+.nav-item .tooltip {
+    display: none;
+    position: absolute;
+    right: 100%;
+    margin-right: 8px;
+    background-color: #fff;
+    color: #333;
+    padding: 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.nav-item:hover .tooltip {
+    display: block;
+}
+
+.nav-item .tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+}
